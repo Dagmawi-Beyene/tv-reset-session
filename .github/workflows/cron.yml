@@ -1,0 +1,15 @@
+name: Reset Dev Mode Session
+
+on:
+  schedule:
+    # Runs at 00:00 UTC every Sunday
+    - cron: '0 0 * * 0'
+  workflow_dispatch: # This allows you to manually trigger the workflow from GitHub UI
+
+jobs:
+  reset-session:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Reset Dev Mode Session URL
+        run: |
+          curl -X GET "https://developer.lge.com/secure/ResetDevModeSession.dev?sessionToken=c22a97b58ea661b33ccbf1fb5cfe8909f407fef2efa8abff510482ad8bcc82f1"
